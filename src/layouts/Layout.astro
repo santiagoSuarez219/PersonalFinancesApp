@@ -1,5 +1,10 @@
 ---
+import Navbar from "../components/navbar.astro";
+
+// Supports weights 100-900
+import "@fontsource-variable/inter";
 import "../styles/global.css";
+import Footer from "../components/footer.astro";
 ---
 
 <!doctype html>
@@ -9,18 +14,22 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>Santiago's Finances</title>
   </head>
   <body>
+    <div
+      class="fixed inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"
+    >
+    </div>
+    <Navbar />
     <slot />
+    <Footer />
   </body>
 </html>
 
 <style>
   html,
   body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
+    font-family: "Inter Variable", sans-serif;
   }
 </style>

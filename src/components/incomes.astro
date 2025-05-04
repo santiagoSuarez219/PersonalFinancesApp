@@ -1,0 +1,42 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Income {
+  title: string;
+  value: number;
+}
+interface Props {
+  incomes: Income[];
+}
+const { incomes } = Astro.props;
+---
+
+<ul class="divide-y divide-gray-200 dark:divide-gray-700">
+  {
+    incomes.map((income) => (
+      <li class="py-3 sm:pb-4">
+        <div class="flex items-center space-x-4 rtl:space-x-reverse">
+          <div class="shrink-0">
+            <Icon name="coin" class="size-8 text-white" />
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-lg font-medium text-gray-900 truncate dark:text-white">
+              {income.title}
+            </p>
+            <p class="text-gray-500 truncate dark:text-gray-400">
+              Cada 30 días
+            </p>
+          </div>
+          <div class="inline-flex items-center text-lg font-semibold text-gray-900 dark:text-white">
+            {income.value.toLocaleString("es-CO", {
+              style: "currency",
+              currency: "COP",
+            })}
+          </div>
+          <Icon name="trash" class="size-6 text-red-400 cursor-pointer" />
+          <Icon name="pencil" class="size-6 text-blue-400 cursor-pointer" />
+        </div>
+      </li>
+    ))
+  }
+</ul>

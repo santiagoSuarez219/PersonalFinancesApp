@@ -1,0 +1,90 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Income {
+  title: string;
+  value: number;
+}
+interface Expense {
+  title: string;
+  value: number;
+}
+interface Props {
+  incomes: Income[];
+  expenses: Expense[];
+}
+const { incomes, expenses } = Astro.props;
+---
+
+<div class="grid md:grid-cols-4 gap-8 mb-12 max-w-screen-xl mx-auto">
+  <div class="bg-blue-900 text-white p-6 rounded-lg text-left text-lg">
+    <p class="flex items-center gap-1">
+      <span>
+        <Icon name="arrow-up" class="size-5" />
+      </span>Total ingresos mensuales
+    </p>
+    <p class="text-2xl font-bold mt-2">
+      {
+        incomes
+          .reduce((acc, income) => acc + income.value, 0)
+          .toLocaleString("es-CO", {
+            style: "currency",
+            currency: "COP",
+          })
+      }
+    </p>
+  </div>
+  <div class="bg-gray-600 text-white p-6 rounded-lg text-left text-lg">
+    <p class="flex items-center gap-1">
+      <span>
+        <Icon name="arrow-down" class="size-5" />
+      </span>Total gastos mensuales
+    </p>
+    <p class="text-2xl font-bold mt-2">
+      {
+        expenses
+          .reduce((acc, expense) => acc + expense.value, 0)
+          .toLocaleString("es-CO", {
+            style: "currency",
+            currency: "COP",
+          })
+      }
+    </p>
+  </div>
+  <div class="bg-green-900 text-white p-6 rounded-lg text-left text-lg">
+    <p class="flex items-center gap-1">
+      <span>
+        <Icon name="wallet" class="size-5" />
+      </span>Saldo mensual
+    </p>
+    <p class="text-2xl font-bold mt-2">
+      {
+        (
+          incomes.reduce((acc, income) => acc + income.value, 0) -
+          expenses.reduce((acc, expense) => acc + expense.value, 0)
+        ).toLocaleString("es-CO", {
+          style: "currency",
+          currency: "COP",
+        })
+      }
+    </p>
+  </div>
+  <div class="bg-blue-900 text-white p-6 rounded-lg text-left text-lg">
+    <p class="flex items-center gap-1">
+      <span>
+        <Icon name="arrow-down" class="size-5" />
+      </span>Gastos este mes
+    </p>
+    <p class="text-2xl font-bold mt-2">
+      {
+        (
+          incomes.reduce((acc, income) => acc + income.value, 0) -
+          expenses.reduce((acc, expense) => acc + expense.value, 0)
+        ).toLocaleString("es-CO", {
+          style: "currency",
+          currency: "COP",
+        })
+      }
+    </p>
+  </div>
+</div>
