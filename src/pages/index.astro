@@ -1,7 +1,4 @@
 ---
-import { Icon } from "astro-icon/components";
-import Header from "../components/header.astro";
-import Incomes from "../components/incomes.astro";
 import Values from "../components/values.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -32,36 +29,5 @@ const expenses = [
 ---
 
 <Layout>
-  <div class="py-10">
-    <Values incomes={incomes} expenses={expenses} />
-    <div class="grid md:grid-cols-2 max-w-screen-xl mx-auto gap-16">
-      <div class="relative">
-        <span
-          class="p-3 absolute right-0 rounded-full bg-blue-400 cursor-pointer hover:scale-105 transition-all duration-200"
-        >
-          <Icon name="plus" class="size-6 text-blue-900" />
-        </span>
-        <h2
-          class="text-3xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-white"
-        >
-          Lista de ingresos mensuales
-        </h2>
-        <p class="mb-8 font-normal text-gray-500 dark:text-gray-400">
-          Gestiona tus fuentes de ingresos
-        </p>
-        <Incomes incomes={incomes} />
-      </div>
-      <div>
-        <h2
-          class="text-3xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-white"
-        >
-          Lista de gastos mensuales
-        </h2>
-        <p class="mb-8 font-normal text-gray-500 dark:text-gray-400">
-          Gestiona tus fuentes de ingresos
-        </p>
-        <Incomes incomes={expenses} />
-      </div>
-    </div>
-  </div>
+  <Values incomes={incomes} expenses={expenses} />
 </Layout>

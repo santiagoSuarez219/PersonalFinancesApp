@@ -1,0 +1,62 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "../layouts/Layout.astro";
+import Incomes from "../components/incomes.astro";
+
+const incomes = [
+  {
+    title: "Mi salario",
+    value: 4300000,
+  },
+  {
+    title: "Otro salario",
+    value: 2000000,
+  },
+  {
+    title: "Otros ingresos",
+    value: 0,
+  },
+];
+const expenses = [
+  {
+    title: "Alquiler",
+    value: 4000000,
+  },
+  {
+    title: "Comida",
+    value: 700000,
+  },
+];
+---
+
+<Layout>
+  <div class="grid md:grid-cols-2 max-w-screen-xl mx-auto gap-16">
+    <div class="relative">
+      <span
+        class="p-3 absolute right-0 rounded-full bg-blue-400 cursor-pointer hover:scale-105 transition-all duration-200"
+      >
+        <Icon name="plus" class="size-6 text-blue-900" />
+      </span>
+      <h2
+        class="text-3xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-white"
+      >
+        Lista de ingresos mensuales
+      </h2>
+      <p class="mb-8 font-normal text-gray-500 dark:text-gray-400">
+        Gestiona tus fuentes de ingresos
+      </p>
+      <Incomes incomes={incomes} />
+    </div>
+    <div>
+      <h2
+        class="text-3xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-white"
+      >
+        Lista de gastos mensuales
+      </h2>
+      <p class="mb-8 font-normal text-gray-500 dark:text-gray-400">
+        Gestiona tus fuentes de ingresos
+      </p>
+      <Incomes incomes={expenses} />
+    </div>
+  </div>
+</Layout>
